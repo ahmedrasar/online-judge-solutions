@@ -3,4 +3,6 @@
 *.out
 *.o
 
-
+# Testing Files
+*_input.txt
+*_output.txt
