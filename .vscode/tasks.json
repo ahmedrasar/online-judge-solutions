@@ -1,0 +1,89 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Windows",
+            "command": "g++",
+            "args": [
+                "-o2",
+                "-std=c++23",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileBasenameNoExtension}${fileExtname}",
+                "-o",
+                "${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+        },
+        {
+            "type": "cppbuild",
+            "label": "UNIX",
+            "command": "g++",
+            "args": [
+                "-o2",
+                "-std=c++23",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileBasenameNoExtension}${fileExtname}",
+                "-o",
+                "${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+        },
+        {
+            "type": "cppbuild",
+            "label": "Uva Simulation Windows",
+            "command": "g++",
+            "args": [
+                "-o2",
+                "-std=c++11",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileBasenameNoExtension}${fileExtname}",
+                "-o",
+                "${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+        },
+        {
+            "type": "cppbuild",
+            "label": "Uva Simulation UNIX",
+            "command": "g++",
+            "args": [
+                "-o2",
+                "-std=c++11",
+                "-fdiagnostics-color=always",
+                "-g",
+                "${fileBasenameNoExtension}${fileExtname}",
+                "-o",
+                "${fileBasenameNoExtension}.out"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+        },
+    ],
+    "version": "2.0.0"
+}

@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        // Executables
+        "**/*.exe": true,
+        "**/*.out": true
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+}
