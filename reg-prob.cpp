@@ -47,7 +47,7 @@ struct Problem
             replace(file_name.begin(), file_name.end(), ' ', '_');
             for (auto &c : file_name)
                 c = tolower(c);
-            return Problem{id, name, dir + file_name + ".cpp"};
+            return Problem{id, name, dir + to_string(id) + '_' + file_name + ".cpp"};
         }
         catch (const invalid_argument)
         {
