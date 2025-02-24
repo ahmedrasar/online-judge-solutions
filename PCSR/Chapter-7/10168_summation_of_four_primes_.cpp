@@ -7,7 +7,6 @@ using namespace std;
     Author: Ahmed R. Asar
 
     Time Complexity: O(n)
-    Space Complexity: O(1)
 */
 
 #define MAX 10000000
