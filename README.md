@@ -9,6 +9,7 @@ All solutions follow the C++11 standard and was run with GCC C++ compiler to sim
 | [100](PCSR/Chapter-1/100_the_3n+1_problem.cpp) | The 3n + 1 problem |
 | [706](PCSR/Chapter-1/706_lc-display.cpp) | LC-Display |
 | [843](PCSR/Chapter-2/843_crypt_kicker.cpp) | Crypt Kicker |
+| [848](PCSR\Chapter-3\848_fmt.cpp) | Fmt |
 | [10033](PCSR//Chapter-1/1033_interpreter.cpp) | Interpreter |
 | [10038](PCSR/Chapter-2/10038_jolly_jumpers.cpp) | Jolly Jumpers |
 | [10044](PCSR/Chapter-2/10044_erdos_numbers.cpp) | Erdo Numbers |
