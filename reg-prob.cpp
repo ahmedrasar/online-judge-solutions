@@ -17,13 +17,11 @@ using namespace std;
 #define DIRSPLITER '/'
 #endif
 
-string trim(const string &str);
-
 // Exceptions
-struct bad_problem_format_exception : exception
+struct invalid_problem_format : exception
 {
 };
-struct readme_file_not_found_exception : exception
+struct invalid_file : exception
 {
 };
 struct dir_not_found_exception : exception
@@ -37,53 +35,50 @@ struct Problem
 
     static Problem from_raw(const string &raw_prob, const string &dir)
     {
-        try
-        {
-            // Format: ID - Name in Title Case
-            const auto splitter = raw_prob.find('-');
-            const auto id = stoi(raw_prob.substr(0, splitter));
-            const auto name = trim(raw_prob.substr(splitter + 1));
-            auto file_name = name;
-            replace(file_name.begin(), file_name.end(), ' ', '_');
-            for (auto &c : file_name)
-                c = tolower(c);
-            return Problem{id, name, dir + to_string(id) + '_' + file_name + ".cpp"};
-        }
-        catch (const invalid_argument)
-        {
-            throw bad_problem_format_exception();
-        }
+
+        // Format: ID - Name in Title Case
+        static const regex format(R"(\s*(\d+)\s*-?\s*(.+))");
+        smatch match;
+        regex_search(raw_prob, match, format);
+        if (match.empty())
+            throw invalid_problem_format();
+        const auto id = stoi(match[1]);
+        const string name = match[2];
+        auto file_name = name;
+        replace(file_name.begin(), file_name.end(), ' ', '_');
+        for (auto &c : file_name)
+            c = tolower(c);
+        return Problem{id, name, dir + to_string(id) + '_' + file_name + ".cpp"};
     }
 };
 
-void reg_problem(const Problem &prob)
+void reg_problem(const Problem &prob, fstream &file)
 {
-    auto readme_file = fstream("README.md");
-    if (!readme_file)
-        throw readme_file_not_found_exception();
-
     stringstream buffer;
-    buffer << readme_file.rdbuf();
+    buffer << file.rdbuf();
 
     ostringstream updated_content;
     string _line;
     while (getline(buffer, _line))
     {
-        static const regex pattern(R"(\|\s*\[(\d+)\]\(.+\)\s*\|\s*([^|]+)\s*\|)");
+        // Format: [ID]
+        static const regex format(R"(\[(\d+)\])");
         smatch match;
-        if ((regex_search(_line, match, pattern) && stoi(match[1]) > prob.id) || buffer.eof())
-        {
-            updated_content << "| " << '[' << prob.id << ']' << '(' << prob.file_path << ')' << " | " << prob.name << " |\n";
-            updated_content << _line << '\n';
+        if ((regex_search(_line, match, format) && stoi(match[1]) > prob.id))
             break;
-        }
+
         updated_content << _line << '\n';
     }
+    // Format: | [ID](file) | Name |
+    updated_content << "| " << '[' << prob.id << ']' << '(' << prob.file_path << ')' << " | " << prob.name << " |\n";
+
+    if (buffer)
+        updated_content << _line << '\n';
     updated_content << buffer.rdbuf();
 
     // Overwrite the file
-    readme_file.seekp(0);
-    readme_file << updated_content.str();
+    file.seekp(0);
+    file << updated_content.str();
 }
 
 int main(int argc, char const *argv[])
@@ -111,11 +106,14 @@ int main(int argc, char const *argv[])
         if (!file)
             throw dir_not_found_exception();
 
-        reg_problem(prob);
+        fstream readme_file("README.md");
+        if (!readme_file)
+            throw invalid_file();
+        reg_problem(prob, readme_file);
 
         return 0;
     }
-    catch (const bad_problem_format_exception)
+    catch (const invalid_problem_format)
     {
         cout << "Bad problem format.\n";
         return -1;
@@ -125,21 +123,9 @@ int main(int argc, char const *argv[])
         cout << "Please enter a valid path.\n";
         return -1;
     }
-    catch (const readme_file_not_found_exception)
+    catch (const invalid_file)
     {
         cout << "README.md file not found.\n";
         return -1;
     }
-}
-
-string trim(const string &str)
-{
-    auto start = find_if(str.begin(), str.end(), [](unsigned char ch)
-                         { return !isspace(ch); });
-
-    auto end = find_if(str.rbegin(), str.rend(), [](unsigned char ch)
-                       { return !isspace(ch); })
-                   .base();
-
-    return (start < end) ? string(start, end) : "";
 }
