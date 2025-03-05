@@ -11,11 +11,8 @@ using namespace std;
     Date: 2025-2-22
 */
 
-#if defined(_WIN64) || defined(_WIN32)
-#define DIRSPLITER '\\'
-#else
-#define DIRSPLITER '/'
-#endif
+#define READMEFILE "README.md"
+#define SKELETONFILE "skeleton.cpp"
 
 // Exceptions
 struct invalid_problem_format : exception
@@ -31,7 +28,7 @@ struct invalid_path : exception
 struct Problem
 {
     const int id;
-    const string name, file_path;
+    const string name, file_name, file_path;
 
     static Problem from_raw(const string &raw_prob, const string &dir)
     {
@@ -48,7 +45,8 @@ struct Problem
         replace(file_name.begin(), file_name.end(), ' ', '_');
         for (auto &c : file_name)
             c = tolower(c);
-        return Problem{id, name, dir + to_string(id) + '_' + file_name + ".cpp"};
+        file_name = to_string(id) + '_' + file_name;
+        return Problem{id, name, file_name, dir + file_name + ".cpp"};
     }
 };
 
@@ -79,6 +77,17 @@ void reg_problem(const Problem &prob, fstream &file)
     // Overwrite the file
     file.seekp(0);
     file << updated_content.str();
+}
+
+void init_file(ofstream &ofs, const Problem &prob)
+{
+    ostringstream oss;
+    oss << ifstream(SKELETONFILE).rdbuf();
+    string content = oss.str();
+
+    content = regex_replace(content, regex(R"(\$PROBFILE)"), prob.file_name);
+
+    ofs << content;
 }
 
 int main(int argc, char const *argv[])
@@ -113,8 +122,9 @@ int main(int argc, char const *argv[])
         auto file = ofstream(prob.file_path);
         if (!file)
             throw invalid_path();
+        init_file(file, prob);
 
-        fstream readme_file("README.md");
+        fstream readme_file(READMEFILE);
         if (!readme_file)
             throw absent_readme_file();
         reg_problem(prob, readme_file);
