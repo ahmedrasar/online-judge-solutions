@@ -21,10 +21,10 @@ using namespace std;
 struct invalid_problem_format : exception
 {
 };
-struct invalid_file : exception
+struct absent_readme_file : exception
 {
 };
-struct dir_not_found_exception : exception
+struct invalid_path : exception
 {
 };
 
@@ -93,39 +93,47 @@ int main(int argc, char const *argv[])
     try
     {
         string dir;
-        if (argc != 2)
+        if (argc >= 3)
         {
             dir = argv[2];
-            if (dir.back() != DIRSPLITER)
-                dir += DIRSPLITER;
+
+            if (dir.substr(0, 2) == "./" || dir.substr(0, 2) == ".\\")
+                dir = dir.substr(2);
+            for (auto &c : dir)
+            {
+                if (c == '\\')
+                    c = '/';
+            }
+            if (dir.back() != '/')
+                dir += '/';
         }
 
         const Problem prob = Problem::from_raw(raw_prob, dir);
 
         auto file = ofstream(prob.file_path);
         if (!file)
-            throw dir_not_found_exception();
+            throw invalid_path();
 
         fstream readme_file("README.md");
         if (!readme_file)
-            throw invalid_file();
+            throw absent_readme_file();
         reg_problem(prob, readme_file);
 
         return 0;
     }
     catch (const invalid_problem_format)
     {
-        cout << "Bad problem format.\n";
+        cerr << "Bad problem format.\n";
         return -1;
     }
-    catch (const dir_not_found_exception)
+    catch (const invalid_path)
     {
-        cout << "Please enter a valid path.\n";
+        cerr << "Please enter a valid path.\n";
         return -1;
     }
-    catch (const invalid_file)
+    catch (const absent_readme_file)
     {
-        cout << "README.md file not found.\n";
+        cerr << "README.md file not found.\n";
         return -1;
     }
 }
