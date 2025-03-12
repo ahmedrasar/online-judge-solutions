@@ -1,6 +1,17 @@
 # Uva Online Judge soultions in C++
 
+Solutions for [Uva Online Judge](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8) challanges.
+
 All solutions follow the C++11 standard and was run with GCC C++ compiler to simulate the Uva validation test.
+
+## Register Problem Module (reg-prob)
+
+The module inserts a newly created problem in its position in the [Prolem Table](#problems-table) and creates a [skeleton file](skeleton.cpp) with the name of the problem following the format *id_name_in_lower_case* in a given directory.
+
+Run the module with ```reg-prob $problem $path```
+
+- *problem*: the Uva probem in the format *id - name* (the hyphen can be omitted).
+- *path*: directory to save the file in (uses the current directory if not provided).
 
 ## Problems Table
 
@@ -10,7 +21,7 @@ All solutions follow the C++11 standard and was run with GCC C++ compiler to sim
 | [706](PCSR/Chapter-1/706_lc-display.cpp) | LC-Display |
 | [843](PCSR/Chapter-2/843_crypt_kicker.cpp) | Crypt Kicker |
 | [848](PCSR/Chapter-3/848_fmt.cpp) | Fmt |
-| [10033](PCSR/Chapter-1/1033_interpreter.cpp) | Interpreter |
+| [10033](PCSR/Chapter-1/10033_interpreter.cpp) | Interpreter |
 | [10038](PCSR/Chapter-2/10038_jolly_jumpers.cpp) | Jolly Jumpers |
 | [10044](PCSR/Chapter-2/10044_erdos_numbers.cpp) | Erdo Numbers |
 | [10050](PCSR/Chapter-2/10050_hartals.cpp) | Hartals |
@@ -18,7 +29,7 @@ All solutions follow the C++11 standard and was run with GCC C++ compiler to sim
 | [10142](PCSR/Chapter-1/10142_australian_voting.cpp) | Australian Voting |
 | [10149](PCSR/Chapter-2/10149_yahtzee.cpp) | Yazhtzee |
 | [10150](PCSR/Chapter-3/10150_doublets.cpp) | Doublets |
-| [10168](PCSR/Chapter-7/10168_summation_of_four_primes_.cpp) | Summation of four primes |
+| [10168](PCSR/Chapter-7/10168_summation_of_four_primes_.cpp) | Summation of Four Primes |
 | [10189](PCSR/Chapter-1/10189_minesweeper.cpp) | Minesweeper |
 | [10196](PCSR/Chapter-1/10196_check_the_check.cpp) | Check The Check |
 | [10205](PCSR/Chapter-2/10205_stack_em_up.cpp) | Stack 'em Up |
