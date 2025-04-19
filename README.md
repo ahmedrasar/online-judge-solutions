@@ -25,6 +25,7 @@ Run the module with ```reg-prob $problem $path```
 | [10038](PCSR/Chapter-2/10038_jolly_jumpers.cpp) | Jolly Jumpers |
 | [10044](PCSR/Chapter-2/10044_erdos_numbers.cpp) | Erdo Numbers |
 | [10050](PCSR/Chapter-2/10050_hartals.cpp) | Hartals |
+| [10082](PCSR/Chapter-3/10082_wertyz.cpp) | WERTYZ |
 | [10137](PCSR/Chapter-1/10137_the_trip.cpp) | The Trip |
 | [10142](PCSR/Chapter-1/10142_australian_voting.cpp) | Australian Voting |
 | [10149](PCSR/Chapter-2/10149_yahtzee.cpp) | Yazhtzee |
