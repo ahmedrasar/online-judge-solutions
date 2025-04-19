@@ -34,6 +34,7 @@ Run the module with ```reg-prob $problem $path```
 | [10189](PCSR/Chapter-1/10189_minesweeper.cpp) | Minesweeper |
 | [10196](PCSR/Chapter-1/10196_check_the_check.cpp) | Check The Check |
 | [10205](PCSR/Chapter-2/10205_stack_em_up.cpp) | Stack 'em Up |
+| [10252](PCSR/Chapter-3/10252_common_permutation.cpp) | Common Permutation |
 | [10258](PCSR/Chapter-2/10258_contest_scoreboard.cpp) | Contest Scoreboard |
 | [10267](PCSR/Chapter-1/10267_graphical_editor.cpp) | Graphical Editor |
 | [10315](PCSR/Chapter-2/10315_poker_hands.cpp) | Pocker Hands |
