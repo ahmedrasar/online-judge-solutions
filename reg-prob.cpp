@@ -1,27 +1,29 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 #include <vector>
 #include <algorithm>
 #include <regex>
 using namespace std;
 
-/*
-    Author: Ahmed R. Asar
-    Date: 2025-2-22
-*/
-
 #define READMEFILE "README.md"
 #define SKELETONFILE "skeleton.cpp"
 
+string cur_date();
+
 // Exceptions
-struct invalid_problem_format : exception
+class reg_prob_exception : exception
 {
 };
-struct absent_readme_file : exception
+
+class invalid_problem_format : reg_prob_exception
 {
 };
-struct invalid_path : exception
+class absent_readme_file : reg_prob_exception
+{
+};
+class invalid_path : reg_prob_exception
 {
 };
 
@@ -33,7 +35,7 @@ struct Problem
     static Problem from_raw(const string &raw_prob, const string &dir)
     {
 
-        // Format: ID - Name in Title Case
+        // Format: ID -? Name in Title Case
         static const regex format(R"(\s*(\d+)\s*-?\s*(.+))");
         smatch match;
         regex_search(raw_prob, match, format);
@@ -85,7 +87,14 @@ void init_file(ofstream &ofs, const Problem &prob)
     oss << ifstream(SKELETONFILE).rdbuf();
     string content = oss.str();
 
-    content = regex_replace(content, regex(R"(\$PROBFILE)"), prob.file_name);
+    const vector<pair<regex, string>> search_replace_pairs{
+        {regex(R"(\$PROBFILE)"), prob.file_name},
+        {regex(R"(\$DATE)"), cur_date()},
+    };
+
+    // Replace $PLACEHOLDERS
+    for (const auto pair : search_replace_pairs)
+        content = regex_replace(content, pair.first, pair.second);
 
     ofs << content;
 }
@@ -146,4 +155,19 @@ int main(int argc, char const *argv[])
         cerr << "README.md file not found.\n";
         return -1;
     }
+    catch (const exception e)
+    {
+        cerr << "Unkown Excpetion: " << e.what();
+        return -2;
+    }
+}
+
+/// @return the current date on format YYYY-MM-DD
+string cur_date()
+{
+    time_t rawtime;
+    time(&rawtime);
+
+    tm *timeinfo = localtime(&rawtime);
+    return to_string(timeinfo->tm_year + 1900) + '-' + to_string(timeinfo->tm_mon + 1) + '-' + to_string(timeinfo->tm_mday);
 }

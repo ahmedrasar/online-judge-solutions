@@ -17,7 +17,7 @@ using namespace std;
 
 /*
     Author: Ahmed R. Asar
-    TODO: Date: 2025-2-22
+    Date: $DATE
 
     TODO: Time complexity: O(n)
 */
