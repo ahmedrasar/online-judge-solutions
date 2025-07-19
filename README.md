@@ -21,6 +21,7 @@ Run the module with ```reg-prob problem path```
 | [706](PCSR/Chapter-1/706_lc-display.cpp) | LC-Display |
 | [843](PCSR/Chapter-2/843_crypt_kicker.cpp) | Crypt Kicker |
 | [848](PCSR/Chapter-3/848_fmt.cpp) | Fmt |
+| [850](PCSR/Chapter-3/850_crypt_kicker_ii.cpp) | Crypt Kicker II |
 | [10010](PCSR/Chapter-3/10010_where’s_waldorf?.cpp) | Where’s Waldorf? |
 | [10033](PCSR/Chapter-1/10033_interpreter.cpp) | Interpreter |
 | [10038](PCSR/Chapter-2/10038_jolly_jumpers.cpp) | Jolly Jumpers |
