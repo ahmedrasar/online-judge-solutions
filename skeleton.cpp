@@ -21,19 +21,25 @@ using namespace std;
     Date: $DATE
 
     TODO: Time complexity: O(n)
+        n: the number of
 */
 
 int main()
 {
+    // TODO: Delete after testing.
     // ifstream cin("$PROBFILE_input.txt");
     // ofstream cout("$PROBFILE_output.txt");
 
     int N;
     cin >> N;
+    cin >> ws;
 
     while (N--)
     {
         /* code */
+
+        if (N)
+            cout << '\n';
     }
 
     return 0;
