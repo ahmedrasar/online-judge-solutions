@@ -6,12 +6,12 @@ All solutions follow the C++11 standard and was run with GCC C++ compiler to sim
 
 ## Register Problem Module (reg-prob)
 
-The module inserts a newly created problem in its position in the [Prolem Table](#problems-table) and creates a [skeleton file](skeleton.cpp) with the name of the problem following the format *id_name_in_lower_case* in a given directory.
+The module inserts a newly created problem in its position in the [Prolem Table](#problems-table) and creates a [skeleton file](skeleton.cpp) with the name of the problem following the format 'id_name_in_lower_case' in a given directory.
 
-Run the module with ```reg-prob $problem $path```
+Run the module with ```reg-prob problem path```
 
-- *problem*: the Uva probem in the format *id - name* (the hyphen can be omitted).
-- *path*: directory to save the file in (uses the current directory if not provided).
+- **problem**: the Uva probem in the format 'id - name' (the hyphen can be omitted).
+- **path**: directory to save the solution file in (uses the current directory if not provided).
 
 ## Problems Table
 
