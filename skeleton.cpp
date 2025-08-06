@@ -18,10 +18,12 @@ using namespace std;
 
 /*
     Author: Ahmed R. Asar
+    Email: ahmed.ragab.a.asar@gmail.com
     Date: $DATE
 
-    TODO: Time complexity: O(n)
-        n: the number of
+    TODO: Add BigO analysis.
+    Time complexity: O(n)
+        n: the number of steps.
 */
 
 int main()
@@ -36,7 +38,7 @@ int main()
 
     while (N--)
     {
-        /* code */
+        // TODO: Code it!
 
         if (N)
             cout << '\n';
