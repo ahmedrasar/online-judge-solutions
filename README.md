@@ -33,6 +33,8 @@ Run the module with ```reg-prob problem path```
 | [10149](PCSR/Chapter-2/10149_yahtzee.cpp) | Yazhtzee |
 | [10150](PCSR/Chapter-3/10150_doublets.cpp) | Doublets |
 | [10168](PCSR/Chapter-7/10168_summation_of_four_primes_.cpp) | Summation of Four Primes |
+| [10188](PCSR/Chapter-3/10188_automated_judge_script.cpp) | Automated Judge Script |
+| [10188](PCSR/Chapter-3/10188_automated_judge_script.cpp) | Automated Judge Script |
 | [10189](PCSR/Chapter-1/10189_minesweeper.cpp) | Minesweeper |
 | [10196](PCSR/Chapter-1/10196_check_the_check.cpp) | Check The Check |
 | [10205](PCSR/Chapter-2/10205_stack_em_up.cpp) | Stack 'em Up |
