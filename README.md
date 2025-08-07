@@ -25,6 +25,7 @@ Run the module with ```reg-prob problem path```
 | [10006](PCSR/Chapter-7/10006_carmichael_numbers.cpp) | Carmichael Numbers |
 | [10010](PCSR/Chapter-3/10010_where’s_waldorf?.cpp) | Where’s Waldorf? |
 | [10033](PCSR/Chapter-1/10033_interpreter.cpp) | Interpreter |
+| [10035](PCSR/Chapter-5/10035_primary_arithmetic.cpp) | Primary Arithmetic |
 | [10038](PCSR/Chapter-2/10038_jolly_jumpers.cpp) | Jolly Jumpers |
 | [10044](PCSR/Chapter-2/10044_erdos_numbers.cpp) | Erdo Numbers |
 | [10050](PCSR/Chapter-2/10050_hartals.cpp) | Hartals |
